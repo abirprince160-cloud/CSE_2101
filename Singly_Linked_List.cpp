@@ -1,35 +1,50 @@
 
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class Node{
 
+class Node {
     public:
-    int data;
-    Node* next;
 
-    Node(int data){
-        this->data = data;
+    int val;
+    Node* next;
+    
+    Node(int val) {
+        this->val = val;
         this->next = NULL;
     }
 };
-int main(){
-    Node* head = new Node (10);
-    Node* a    = new Node (20);
-    Node* b    = new Node (30);
-    Node* c    = new Node (40);
+
+void insert_at_head(Node* &head, int val) {
+    Node* newnode = new Node(val);
+    newnode->next = head;
+    head = newnode;
+}
+
+void print_linked_list(Node* head) {
+    Node* tmp = head;
+    while (tmp != NULL) {
+        cout << tmp->val << endl;
+        tmp = tmp->next;
+    }
+}
+
+int main() 
+{
+    Node* head = new Node(10);
+    Node*    a = new Node(20);
+    Node*    b = new Node(30);
 
     head->next = a;
-    a->next = b;
-    b->next = c;
+    a->next    = b;
 
-    Node* temp = head;
+    print_linked_list(head);
+    
+    insert_at_head(head, 100);
+    insert_at_head(head, 200);
+    insert_at_head(head, 300);
 
-    while(temp != NULL){
-         cout<< temp-> data <<endl;
-         temp = temp -> next;
+    print_linked_list(head);
 
-    }
-
-   return 0;
+    return 0;
 }
