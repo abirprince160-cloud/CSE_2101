@@ -40,6 +40,8 @@ int main()
 
     print_linked_list(head);
     
+    cout<< "Update head:"<<endl;
+    
     insert_at_head(head, 100);
     insert_at_head(head, 200);
     insert_at_head(head, 300);
